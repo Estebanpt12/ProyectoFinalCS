@@ -1,96 +1,58 @@
 using System;
 using System.Collections.Generic;
-using OxyPlot;
-using OxyPlot.Series;
-using OxyPlot.Axes;
+using System.Linq;
 using System.Windows.Forms;
-using OxyPlot.WindowsForms;
+using Microsoft.FSharp.Core;
+using Plotly.NET;
+using Plotly.NET.LayoutObjects;
+using ProyectoFinalCS.Model;
 
 namespace ProyectoFinalCS.Utils
 {
     public class Plot
     {
-        public static void PlotExecutionTimes(Dictionary<int, long> executionTimes)
+        public static void PlotExecutionTimes(List<ExecutionResult> results)
         {
-            // Comprobar los datos antes de graficar
-            Console.WriteLine("Datos de ejecución:");
-            foreach (var size in executionTimes)
+            int lengthAlgorithms = Constants.Algorithms.Count;
+            foreach (var size in Constants.Sizes)
             {
-                Console.WriteLine($"{size.Key}: {size.Value} ms");
-            }
-
-            // Crear el modelo de gráfico
-            var plotModel = new PlotModel { Title = "Execution Times for Matrix Multiplication" };
-
-            // Crear la serie de barras
-            var barSeries = new BarSeries
-            {
-                ItemsSource = new List<BarItem>(),
-                LabelPlacement = LabelPlacement.Outside,
-                LabelFormatString = "{0} ms",
-                FillColor = OxyColors.Blue // Establecer color de las barras
-            };
-
-            // Llenar los valores de la serie con el tiempo de ejecución
-            foreach (var size in executionTimes.Keys)
-            {
-                long time = executionTimes[size];
-                if (time == 0)
+                int i = 0;
+                var tiempos = new long[lengthAlgorithms];
+                foreach (var algorithm in Constants.Algorithms)
                 {
-                    time = 1; // Asignar un valor mínimo visible (por ejemplo 1 ms)
+                    tiempos[i] = results.First(x => x.GetName() == algorithm)
+                        .GetTime($"{size}x{size}");
+                    i += 1;
                 }
 
-                barSeries.Items.Add(new BarItem { Value = time });
+                // Crear el gráfico de columnas
+                var chart = Chart2D.Chart.Column<long, string, int, int, int>(
+                    tiempos, Constants.Algorithms)
+                    .WithTitle($"Tiempos de ejecución para el tamaño {size}x{size}") // Título del gráfico
+                    .WithXAxisStyle(title: Title.init("Algoritmos")) // Título del eje X
+                    .WithYAxisStyle(title: Title.init("Tiempo (ms)")); // Título del eje Y
+
+                // Especificamos explícitamente los tipos en Layout.init
+                var layout = Layout.init<int>(
+                    Margin: FSharpOption<Margin>.Some(Margin.init<int, int, int, int, int, int>( // Especificamos explícitamente los tipos
+                        Left: FSharpOption<int>.Some(50), // Margen izquierdo
+                        Right: FSharpOption<int>.Some(50), // Margen derecho
+                        Top: FSharpOption<int>.Some(50), // Margen superior
+                        Bottom: FSharpOption<int>.Some(50) // Margen inferior
+                    )),
+                    Width: FSharpOption<int>.Some(1000), // Ancho del gráfico
+                    Height: FSharpOption<int>.Some(600) // Alto del gráfico
+                );
+
+                // Aplicar el layout al gráfico
+                chart.WithLayout(layout);
+
+                // Mostrar el gráfico
+                chart.Show();
+
+                // Limpiar los tiempos para el siguiente tamaño
+                Array.Clear(tiempos, 0, tiempos.Length);
             }
-
-            // Crear y agregar el eje X (eje de valores de tiempo de ejecución)
-            var linearAxisX = new LinearAxis
-            {
-                Position = AxisPosition.Bottom,
-                Minimum = 0,  // Valor mínimo del eje X
-                Maximum = 3, // Ajustar el máximo
-                IsZoomEnabled = false,
-                IsPanEnabled = false
-            };
-
-            // Crear y agregar el eje Y (eje de categorías)
-            var categoryAxisY = new CategoryAxis
-            {
-                Position = AxisPosition.Left
-            };
-
-            // Asumimos que las claves del diccionario son las dimensiones de las matrices
-            foreach (var size in executionTimes.Keys)
-            {
-                categoryAxisY.Labels.Add($"{size}x{size}");
-            }
-
-            // Agregar la serie y los ejes al modelo
-            plotModel.Series.Add(barSeries);
-            plotModel.Axes.Add(linearAxisX);
-            plotModel.Axes.Add(categoryAxisY);
-
-            // Crear la vista del gráfico
-            var plotView = new OxyPlot.WindowsForms.PlotView
-            {
-                Model = plotModel,
-                Dock = DockStyle.Fill
-            };
-
-            // Crear el formulario
-            var form = new Form
-            {
-                Text = "Execution Times Graph",
-                Width = 800,
-                Height = 600
-            };
-
-            // Asegurarse de que el PlotView se agregue correctamente al formulario
-            form.Controls.Clear();
-            form.Controls.Add(plotView);
-
-            // Iniciar la aplicación de Windows Forms
-            Application.Run(form);
         }
     }
 }

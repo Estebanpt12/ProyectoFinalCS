@@ -7,47 +7,82 @@ namespace ProyectoFinalCS.Algoritmos
 {
     public class WinogradOriginal : IMatrixMultiplication
     {
-        public int[,] Multiply(int[,] A, int[,] B)
+        public static int[,] AlgWinogradOriginal(int[,] matrizA, int[,] matrizB, int N, int P, int M)
         {
-            int m = A.GetLength(0); // Número de filas de A
-            int n = A.GetLength(1); // Número de columnas de A (filas de B)
-            int p = B.GetLength(1); // Número de columnas de B
+            int upsilon = P % 2;
+            int gamma = P - upsilon;
+            
+            // Inicialización de los arreglos y y z
+            int[] y = new int[N];
+            int[] z = new int[M];
+            int[,] matrizRes = new int[N, M];
 
-            // Inicializar la matriz resultante C con ceros
-            int[,] C = new int[m, p];
-
-            // Paso 1: Calcular los productos parciales
-            int[] rowFactors = new int[m];
-            int[] colFactors = new int[p];
-
-            for (int i = 0; i < m; i++)
+            // Precomputar y
+            for (int i = 0; i < N; i++)
             {
-                rowFactors[i] = 0;
-                for (int k = 0; k < n; k++)
+                int aux = 0;
+                for (int j = 0; j < gamma; j += 2)
                 {
-                    rowFactors[i] += A[i, k] * B[k, k]; // Producto para fila de A y diagonal de B
+                    aux += matrizA[i, j] * matrizA[i, j + 1];
+                }
+                y[i] = aux;
+            }
+
+            // Precomputar z
+            for (int k = 0; k < M; k++)
+            {
+                int aux = 0;
+                for (int j = 0; j < gamma; j += 2)
+                {
+                    aux += matrizB[j, k] * matrizB[j + 1, k];
+                }
+                z[k] = aux;
+            }
+
+            // Calcular el resultado
+            if (upsilon == 1)
+            {
+                int PP = P - 1;
+                for (int i = 0; i < N; i++)
+                {
+                    for (int k = 0; k < M; k++)
+                    {
+                        int aux = 0;
+                        for (int j = 0; j < gamma; j += 2)
+                        {
+                            aux += (matrizA[i, j] + matrizB[j + 1, k]) * (matrizA[i, j + 1] + matrizB[j, k]);
+                        }
+                        matrizRes[i, k] = aux - y[i] - z[k] + matrizA[i, PP] * matrizB[PP, k];
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    for (int k = 0; k < M; k++)
+                    {
+                        int aux = 0;
+                        for (int j = 0; j < gamma; j += 2)
+                        {
+                            aux += (matrizA[i, j] + matrizB[j + 1, k]) * (matrizA[i, j + 1] + matrizB[j, k]);
+                        }
+                        matrizRes[i, k] = aux - y[i] - z[k];
+                    }
                 }
             }
 
-            for (int j = 0; j < p; j++)
-            {
-                colFactors[j] = 0;
-                for (int k = 0; k < n; k++)
-                {
-                    colFactors[j] += A[k, j] * B[k, j]; // Producto para columna de B y diagonal de A
-                }
-            }
+            return matrizRes;
+        }
 
-            // Paso 2: Calcular el producto resultante usando los factores parciales
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < p; j++)
-                {
-                    C[i, j] = rowFactors[i] + colFactors[j] - (A[i, j] * B[j, i]);
-                }
-            }
+        public int[,] Multiply(int[,] matrizA, int[,] matrizB)
+        {
+            int N = matrizA.GetLength(0); // Filas de matrizA
+            int P = matrizB.GetLength(0); // Filas de matrizB (debe ser igual a columnas de matrizA)
+            int M = matrizB.GetLength(1); // Columnas de matrizB
 
-            return C;
+            return AlgWinogradOriginal(matrizA, matrizB, N, P, M);
         }
     }
 }
+// O(N * M * P / 2)

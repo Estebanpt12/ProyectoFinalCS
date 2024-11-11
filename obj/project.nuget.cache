@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "nVM8fhwzJC4=",
+  "dgSpecHash": "0GAmwDq3qqo=",
   "success": true,
   "projectFilePath": "C:\\Users\\esteb\\OneDrive\\Documentos\\U\\Algoritmos\\ProyectoFinalCS\\ProyectoFinalCS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\esteb\\.nuget\\packages\\dynamicobj\\2.0.0\\dynamicobj.2.0.0.nupkg.sha512",
+    "C:\\Users\\esteb\\.nuget\\packages\\fsharp.core\\8.0.300\\fsharp.core.8.0.300.nupkg.sha512",
+    "C:\\Users\\esteb\\.nuget\\packages\\giraffe.viewengine.strongname\\2.0.0-alpha1\\giraffe.viewengine.strongname.2.0.0-alpha1.nupkg.sha512",
+    "C:\\Users\\esteb\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\esteb\\.nuget\\packages\\oxyplot.core\\2.2.0\\oxyplot.core.2.2.0.nupkg.sha512",
-    "C:\\Users\\esteb\\.nuget\\packages\\oxyplot.windowsforms\\2.2.0\\oxyplot.windowsforms.2.2.0.nupkg.sha512"
+    "C:\\Users\\esteb\\.nuget\\packages\\oxyplot.windowsforms\\2.2.0\\oxyplot.windowsforms.2.2.0.nupkg.sha512",
+    "C:\\Users\\esteb\\.nuget\\packages\\plotly.net\\5.0.0\\plotly.net.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

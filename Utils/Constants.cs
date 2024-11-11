@@ -9,9 +9,16 @@ namespace ProyectoFinalCS.Utils
     {
         public readonly static int[] Sizes = [2, 4, 8, 16, 32, 64, 128, 256];
         public readonly static List<string> Algorithms = [
-                "StrassenNaiv",
                 "StrassenWinograd",
-                "WinogradOriginal"
+                "WinogradOriginal",
+                "WinogradScaled",
+                "NaivLoopUnrollingFour",
+                "NaivLoopUnrollingTwo",
+                "NaivOnArray",
+                "V3SequentialBloc",
+                "V4ParallelBlock",
+                "StrassenNaiv",
+                "IV3SequentialBlock"
         ];
     }
 }

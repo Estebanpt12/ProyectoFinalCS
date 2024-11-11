@@ -12,7 +12,16 @@ namespace ProyectoFinalCS.AlgoritmosImpl
         private readonly Dictionary<string, IMatrixMultiplication> _diccionario = 
             new Dictionary<string, IMatrixMultiplication>()
             {
-                {"strassenNaiv", new StrassenNaiv()}
+                {"StrassenNaiv", new StrassenNaiv()},
+                {"StrassenWinograd", new StrassenWinograd()},
+                {"WinogradOriginal", new WinogradOriginal()},
+                {"WinogradScaled", new WinogradScaled()},
+                {"NaivLoopUnrollingFour", new NaivLoopUnrollingFour()},
+                {"NaivLoopUnrollingTwo", new NaivLoopUnrollingTwo()},
+                {"NaivOnArray", new NaivOnArray()},
+                {"V3SequentialBloc", new V3SequentialBloc()},
+                {"V4ParallelBlock", new V4ParallelBlock()},
+                {"IV3SequentialBlock", new IV3SequentialBlock()}
             };
 
         public MatrixMultiplicationContext(string nombreAlgoritmo)
@@ -34,6 +43,12 @@ namespace ProyectoFinalCS.AlgoritmosImpl
             // Registrar el tiempo de ejecución y las dimensiones de las matrices
             Logger.LogExecutionTime(_algorithm.GetType().Name, stopwatch.ElapsedMilliseconds, 
                 matrixA.GetLength(0), matrixA.GetLength(1), matrixB.GetLength(0), matrixB.GetLength(1));
+
+            if(matrixA.GetLength(0) == 4)
+            {
+                PrintMat(result);
+                Console.WriteLine("------------------------------------------------");
+            }
 
             return (result, stopwatch.ElapsedMilliseconds);
         }

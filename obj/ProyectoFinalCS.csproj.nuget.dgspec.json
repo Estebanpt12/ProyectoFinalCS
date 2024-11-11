@@ -46,6 +46,10 @@
             "OxyPlot.WindowsForms": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Plotly.NET": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
