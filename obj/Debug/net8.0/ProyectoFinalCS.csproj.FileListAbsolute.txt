@@ -1,0 +1,15 @@
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\bin\Debug\net8.0\ProyectoFinalCS.exe
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\bin\Debug\net8.0\ProyectoFinalCS.deps.json
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\bin\Debug\net8.0\ProyectoFinalCS.runtimeconfig.json
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\bin\Debug\net8.0\ProyectoFinalCS.dll
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\bin\Debug\net8.0\ProyectoFinalCS.pdb
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.AssemblyInfoInputs.cache
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.AssemblyInfo.cs
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.csproj.CoreCompileInputs.cache
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.dll
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\refint\ProyectoFinalCS.dll
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.pdb
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.genruntimeconfig.cache
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ref\ProyectoFinalCS.dll
+C:\Users\esteb\OneDrive\Documentos\U\Algoritmos\ProyectoFinalCS\obj\Debug\net8.0\ProyectoFinalCS.csproj.AssemblyReference.cache

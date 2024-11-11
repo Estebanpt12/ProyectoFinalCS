@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>  <!-- Esto le indica al compilador que es una aplicación de Windows -->
+    <TargetFramework>net8.0-windows</TargetFramework> <!-- Aquí se especifica la plataforma Windows -->
+    <UseWindowsForms>true</UseWindowsForms>  <!-- Esto habilita Windows Forms -->
+    <UseWPF>false</UseWPF>  <!-- Si no usas WPF, esto debe ser 'false' -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OxyPlot.WindowsForms" Version="2.2.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "nVM8fhwzJC4=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\esteb\\OneDrive\\Documentos\\U\\Algoritmos\\ProyectoFinalCS\\ProyectoFinalCS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\esteb\\.nuget\\packages\\oxyplot.core\\2.2.0\\oxyplot.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\esteb\\.nuget\\packages\\oxyplot.windowsforms\\2.2.0\\oxyplot.windowsforms.2.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
